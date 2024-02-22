@@ -1,0 +1,9 @@
+﻿@model WeatherForecastUploadVM
+<div class="card-body p-4">
+    <form method="post" class="row" enctype="multipart/form-data">
+        <div class="form-floating py-2 col-12">
+            <input asp-for="Files" class="form-control border-0 shadow" multiple/>
+        </div>
+        <button type="submit" class="btn btn-primary form-control">Upload</button>
+    </form>
+</div>

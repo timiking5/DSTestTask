@@ -1,0 +1,40 @@
+﻿@model WeatherForecastViewVM
+<form method="post" class="row">
+    <div class="form-floating py-2 col-12">
+        <select asp-for="GrouppingType" asp-items="@(ViewData["GrouppingTypes"] as IEnumerable<SelectListItem>)" class="form-select border-0 shadow">
+            <option disabled selected>--Select Category--</option>
+        </select>
+        <label asp-for="GrouppingType" class="ms-2"></label>
+    </div>
+    <button class="btn btn-primary form-control" type="submit">Load Data</button>
+    
+</form>
+
+@if (Model is not null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Temperature</th>
+                <th scope="col">Air Pressure</th>
+                <th scope="col">Cloudiness</th>
+                <th scope="col">Wind Speed</th>
+                <th scope="col">Humidity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var entry in Model.WeatherForecasts)
+            {
+                <tr>
+                    <th>@entry.Date.ToString("yyyy/MM")</th>
+                    <td>@entry.Temperature.ToString("N2")</td>
+                    <td>@entry.AirPressure.ToString("N2")</td>
+                    <td>@entry.Cloudiness.ToString("N2")</td>
+                    <td>@entry.WindSpeed.ToString("N2")</td>
+                    <td>@entry.Humidity.ToString("N2")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
